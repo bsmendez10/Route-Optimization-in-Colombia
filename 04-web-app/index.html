@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="An interactive route optimization demo inspired by a logistics case study in Colombia's Coffee Region and Valle del Cauca."
+  >
+  <title>Route Optimization in Colombia | Synthetic Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="plan.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="brand">
+        COFFEE REGION AND VALLE DEL CAUCA
+        <span>SYNTHETIC DEMO</span>
+      </div>
+
+      <h1>Route Optimization in Colombia</h1>
+      <p>
+        Explore how a delivery list becomes an optimized route.
+        Select a stop to see its details, then mark deliveries complete
+        to try the driver's workflow.
+      </p>
+
+      <div class="metrics" aria-label="Synthetic route summary">
+        <div>
+          <strong id="deliveries"></strong>
+          Delivery stops
+        </div>
+        <div>
+          <strong id="legs"></strong>
+          Selected route legs
+        </div>
+        <div>
+          <strong id="minutes"></strong>
+          Driving minutes in the demo
+        </div>
+      </div>
+    </header>
+
+    <section class="progress panel" aria-labelledby="progress-label">
+      <div class="bar-label">
+        <h2 id="progress-label">Delivery progress</h2>
+        <output id="count" aria-live="polite"></output>
+      </div>
+      <progress
+        id="progress"
+        max="19"
+        value="0"
+        aria-labelledby="progress-label"
+      ></progress>
+      <p id="storage-note">Progress stays in this browser.</p>
+    </section>
+
+    <div class="layout">
+      <section class="panel map-panel" aria-labelledby="map-title">
+        <h2 id="map-title">Route diagram</h2>
+        <p>Select a numbered stop to see its details.</p>
+        <svg
+          id="map"
+          viewBox="0 0 620 380"
+          role="group"
+          aria-label="Interactive diagram of the synthetic delivery route"
+        ></svg>
+        <small>
+          A marks the origin and B marks the destination. The line shows
+          the visit order through fictional stops.
+        </small>
+        <div id="detail" class="detail" aria-live="polite"></div>
+      </section>
+
+      <section class="panel manifest" aria-labelledby="manifest-title">
+        <div class="bar-label">
+          <h2 id="manifest-title">Delivery manifest</h2>
+          <label for="filter">
+            Status
+            <select id="filter">
+              <option value="all">All deliveries</option>
+              <option value="pending">Pending</option>
+              <option value="done">Completed</option>
+            </select>
+          </label>
+        </div>
+        <ol id="list"></ol>
+      </section>
+    </div>
+
+    <footer>
+      Portfolio demo based on a Colombian logistics case study.
+      The stops and travel times are fictional. The route was computed
+      with Pyomo and HiGHS.
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,38 @@
+:root{color-scheme:light;--ink:#17383b;--muted:#4a6563;--teal:#087166;--line:#d8e4de;--lime:#dcef9d}
+*{box-sizing:border-box}
+body{margin:0;background:#edf4f0;color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{max-width:1180px;margin:auto;padding:24px}
+.hero{background:#113638;color:white;border-radius:24px;padding:clamp(24px,5vw,52px)}
+.brand{display:flex;align-items:center;gap:16px;flex-wrap:wrap;letter-spacing:.12em;font-weight:800}
+.brand span{color:#18382a;background:var(--lime);border-radius:99px;padding:5px 12px;font-size:11px}
+h1{font-size:clamp(36px,6vw,68px);line-height:1.03;margin:18px 0 12px}
+h2{font-size:21px;margin:0}
+p{margin:6px 0 12px;color:var(--muted)}
+.hero p{color:#d9eae4}
+.metrics{display:flex;flex-wrap:wrap;gap:18px 42px;margin-top:24px}
+.metrics div{font-size:14px;color:#d9eae4}
+.metrics strong{display:block;font-size:31px;color:white}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;min-width:0}
+.progress{margin:16px 0}
+.bar-label{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+progress{width:100%;accent-color:var(--teal)}
+.progress p{font-size:14px;margin-bottom:0}
+.layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:16px;align-items:start}
+#map{width:100%;display:block;background:#e9f1eb;border-radius:12px;margin-bottom:8px}
+#map text{pointer-events:none;user-select:none}
+.marker{cursor:pointer}
+.marker circle{fill:white;stroke:var(--teal);stroke-width:2}
+.marker text{fill:var(--ink);font-size:12px;font-weight:800;text-anchor:middle;dominant-baseline:central}
+.marker:hover circle,.marker:focus circle,.marker.selected circle{stroke:#123638;stroke-width:4}
+.marker.done circle{fill:var(--lime)}
+.marker.endpoint circle{fill:#123638}
+.marker.endpoint text{fill:white}
+.detail{border-top:1px solid var(--line);margin-top:14px;padding-top:12px}
+ol{list-style:none;padding:0;margin:12px 0 0;max-height:474px;overflow:auto}
+li{display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding:8px 0}
+button,select{font:inherit;color:var(--ink);border:1px solid var(--line);background:white;border-radius:8px;padding:5px 8px}
+button{cursor:pointer;text-align:left}
+button:hover,button:focus-visible{background:#e9f4ec}
+input{accent-color:var(--teal)}
+footer{padding:16px 0;color:var(--muted);font-size:14px}
+@media(max-width:750px){main{padding:12px}.layout{grid-template-columns:1fr}.metrics{gap:12px 24px}.panel{padding:14px}}

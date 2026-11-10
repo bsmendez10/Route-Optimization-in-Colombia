@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.log
+*.zip
+.matriz.lock
+/03-optimization/ruta_optima.csv
+/03-optimization/resultado_atsp.json
