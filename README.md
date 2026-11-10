@@ -4,6 +4,10 @@
 
 A logistics engineering case study on optimizing a delivery route from Armenia in Colombia’s Coffee Region, through 19 municipalities in Valle del Cauca, to Bogotá. The repository includes an interactive demo with synthetic data.
 
+![Regional map from the Colombian route application with numbered stops](docs/case-study-map.png)
+
+*Earlier driver-facing application, showing the numbered stops and the OSRM road trace. Map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).*
+
 ## Case study at a glance
 
 The Colombian case involved one truck, 19 deliveries, 1,007 water filters, a fixed departure in Armenia, and a fixed finish in Bogotá. The modular run evaluated 380 directed legs and produced a route with 1,549.02 minutes of estimated driving and a 0% solver gap. On the same travel-time matrix, the new visit order reduced estimated driving by 5 min 43 s compared with the previous order. These figures describe the model and its saved input costs. Actual trip times were outside that comparison.
@@ -25,6 +29,10 @@ Google Geocoding and Routes API supplied inputs in the operational project. Pyom
 
 ## Run the synthetic example
 
+![Synthetic delivery demo showing numbered stops, a selected delivery, and progress](docs/route-demo.png)
+
+*The synthetic demo uses fictional stops and travel times. This example shows 8 of 19 deliveries marked complete.*
+
 Use Python 3.14. In PowerShell, from the repository root:
 
 ```powershell
@@ -44,6 +52,7 @@ Open `04-web-app/index.html` in your browser to explore the synthetic solution. 
 - [Matrix acquisition and validation code](03-optimization/construir_matriz.py)
 
 The public example excludes operational addresses, credentials, and Google-derived datasets. The case-study numbers and synthetic demo are reported separately.
+
 
 
 
