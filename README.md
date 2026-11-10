@@ -62,4 +62,4 @@ The demo has the same 21-node structure as the Colombian case, with fictional lo
 - [Pyomo and HiGHS optimizer](03-optimization/optimizar_ruta.py)
 - [Matrix acquisition and validation code](03-optimization/construir_matriz.py)
 
-The public example excludes operational addresses, credentials, and Google-derived datasets. The case-study results and synthetic demo are reported separately.
+The interactive demo uses fictional stops and travel times. The results in the case study come from the original Colombian delivery operation.
