@@ -2,7 +2,7 @@
 
 **Coffee Region and Valle del Cauca**
 
-A logistics engineering case study on optimizing a delivery route from Armenia, through 19 municipalities in Valle del Cauca, to Bogotá. The project combines geospatial data, mathematical optimization, and a web application for the driver.
+A logistics engineering case study on planning a truck route that started in Armenia, served 19 delivery stops across Colombia’s Coffee Region and Valle del Cauca, and returned to the company’s warehouse in Bogotá. The project used geospatial data and mathematical optimization to determine the visit order and presented the route to the driver through a web application.
 
 ![Regional map of the earlier driver-facing application showing numbered stops and a road trace from Armenia to Bogotá](docs/case-study-map.png)
 
