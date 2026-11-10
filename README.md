@@ -1,6 +1,8 @@
-# Route Optimization Portfolio Project
+# Route Optimization in Colombia
 
-A logistics engineering case study that turns a delivery manifest into a minimum-driving-time route and a browser-based driver interface.
+**Coffee Region and Valle del Cauca**
+
+A logistics engineering case study on optimizing a delivery route from Armenia in Colombia’s Coffee Region, through 19 municipalities in Valle del Cauca, to Bogotá. The repository includes an interactive demo with synthetic data.
 
 ## Case study at a glance
 
