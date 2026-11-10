@@ -4,8 +4,6 @@
 
 A logistics engineering case study on optimizing a delivery route from Armenia, through 19 municipalities in Valle del Cauca, to Bogotá. The project combines geospatial data, mathematical optimization, and a web application for the driver.
 
-Select a numbered stop, mark a delivery complete, and watch the progress bar update. The demo uses fictional stops and travel times.
-
 ![Regional map of the earlier driver-facing application showing numbered stops and a road trace from Armenia to Bogotá](docs/case-study-map.png)
 
 *Screenshot of the earlier driver-facing application. Road trace by OSRM. Map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).*
