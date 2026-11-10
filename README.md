@@ -2,19 +2,32 @@
 
 **Coffee Region and Valle del Cauca**
 
-A logistics engineering case study on optimizing a delivery route from Armenia in Colombia’s Coffee Region, through 19 municipalities in Valle del Cauca, to Bogotá. The repository includes an interactive demo with synthetic data.
+A logistics engineering case study on optimizing a delivery route from Armenia, through 19 municipalities in Valle del Cauca, to Bogotá. The project combines geospatial data, mathematical optimization, and a web application for the driver.
 
-![Regional map from the Colombian route application with numbered stops](docs/case-study-map.png)
+**[Try the interactive demo](https://bsmendez10.github.io/Route-Optimization-in-Colombia/04-web-app/)**
 
-*Earlier driver-facing application, showing the numbered stops and the OSRM road trace. Map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).*
+Select a numbered stop, mark a delivery complete, and watch the progress bar update. The demo uses fictional stops and travel times.
+
+![Regional map of the earlier driver-facing application showing numbered stops and a road trace from Armenia to Bogotá](docs/case-study-map.png)
+
+*Screenshot of the earlier driver-facing application. Road trace by OSRM. Map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).*
 
 ## Case study at a glance
 
-The Colombian case involved one truck, 19 deliveries, 1,007 water filters, a fixed departure in Armenia, and a fixed finish in Bogotá. The modular run evaluated 380 directed legs and produced a route with 1,549.02 minutes of estimated driving and a 0% solver gap. On the same travel-time matrix, the new visit order reduced estimated driving by 5 min 43 s compared with the previous order. These figures describe the model and its saved input costs. Actual trip times were outside that comparison.
+The operation involved one truck delivering 1,007 water filters to 19 municipalities. The team previously sequenced deliveries manually. The project introduced a repeatable way to calculate the visit order from estimated driving times and give the driver a web interface to consult the route.
+
+| Metric | Result |
+| --- | --- |
+| Delivery stops | 19 |
+| Directed legs evaluated | 380 |
+| Estimated driving time in the modular run | 1,549.02 minutes |
+| HiGHS optimality gap for the saved matrix | 0% |
+
+When both visit orders were evaluated on the same travel-time matrix, the later optimized order was **5 min 43 s shorter in estimated driving time** than the earlier optimized order. This was a comparison between two computed routes. Actual driving time and savings relative to manual planning were not measured.
 
 ## My contribution
 
-I implemented a modular route-planning workflow in four stages: geocoding delivery addresses, building a directed travel-time matrix, solving for the visit order with Pyomo and HiGHS, and deploying an interactive route viewer to Netlify. I reviewed the delivery coordinates before generating the matrix and evaluated both the previous and optimized visit orders using the same travel-time estimates. I documented the mathematical model and the steps needed to reproduce the result.
+I implemented a modular route-planning workflow in four stages: geocoding delivery addresses, building a directed travel-time matrix, solving for the visit order with Pyomo and HiGHS, and deploying an interactive route viewer to Netlify. I reviewed the delivery coordinates before generating the matrix, compared both optimized visit orders using the same travel-time estimates, and documented the mathematical model and reproduction steps.
 
 ## Workflow
 
@@ -22,18 +35,20 @@ I implemented a modular route-planning workflow in four stages: geocoding delive
 | --- | --- | --- |
 | 01 Geocoding | Delivery addresses and endpoint references | Reviewed coordinates and stable node IDs |
 | 02 Travel-time matrix | 21 geocoded nodes | Estimated minutes and kilometers for 380 directed legs |
-| 03 Optimization | Fixed endpoints, nodes, and travel times | Visit order and HiGHS solve report |
-| 04 Web app | Ordered stops and delivery information | Static map and delivery checklist served through Netlify |
+| 03 Optimization | Fixed endpoints, delivery nodes, and travel times | Optimized visit order and HiGHS solve report |
+| 04 Web application | Ordered stops and delivery information | Map and delivery checklist served through Netlify |
 
-Google Geocoding and Routes API supplied inputs in the operational project. Pyomo formulates the asymmetric traveling salesman path problem. HiGHS solves it. The web interface uses the precomputed results.
+The operational project used Google Geocoding and Routes API to obtain coordinates and estimated travel times. Pyomo formulates the asymmetric traveling salesman path problem, and HiGHS solves it. The web application displays the precomputed route.
 
 ## Run the synthetic example
 
-![Synthetic delivery demo showing numbered stops, a selected delivery, and progress](docs/route-demo.png)
+**[Open the live demo](https://bsmendez10.github.io/Route-Optimization-in-Colombia/04-web-app/)** to explore the route diagram, inspect stops, and filter pending or completed deliveries. Progress is saved in your browser.
 
-*The synthetic demo uses fictional stops and travel times. This example shows 8 of 19 deliveries marked complete.*
+![Synthetic demo showing numbered stops, a selected delivery, and delivery progress](docs/route-demo.png)
 
-Use Python 3.14. In PowerShell, from the repository root:
+*Screenshot of the synthetic demo with 8 of 19 deliveries marked complete.*
+
+To reproduce the synthetic solution locally, use **Python 3.14** and run the following commands in PowerShell from the repository root:
 
 ```powershell
 python -m venv .venv
@@ -41,18 +56,14 @@ python -m venv .venv
 .\.venv\Scripts\python.exe .\03-optimization\optimizar_ruta.py
 ```
 
-Dependency installation needs internet access. Running the optimizer uses the included synthetic files and makes no Google API calls. It writes `ruta_optima.csv` and `resultado_atsp.json` under `03-optimization`. The demo has the same 21-node structure as the case. Its coordinates, costs, and stop labels are fictional.
+Dependency installation requires internet access. The optimization run uses the included synthetic files and makes no Google API calls. It writes `ruta_optima.csv` and `resultado_atsp.json` to `03-optimization`.
 
-Open `04-web-app/index.html` in your browser to explore the synthetic solution. Select a numbered stop, mark deliveries complete, and filter the manifest by status. The route diagram shows the visit order. It uses fictional locations, no external map tiles, and no API keys.
+The demo has the same 21-node structure as the Colombian case, with fictional locations, labels, and costs. To view the precomputed demo locally, open `04-web-app/index.html` in your browser.
 
 ## What to inspect
 
 - [Mathematical model and implementation](docs/model.md)
-- [Original optimizer](03-optimization/optimizar_ruta.py)
+- [Pyomo and HiGHS optimizer](03-optimization/optimizar_ruta.py)
 - [Matrix acquisition and validation code](03-optimization/construir_matriz.py)
 
-The public example excludes operational addresses, credentials, and Google-derived datasets. The case-study numbers and synthetic demo are reported separately.
-
-
-
-
+The public example excludes operational addresses, credentials, and Google-derived datasets. The case-study results and synthetic demo are reported separately.
